@@ -35,6 +35,9 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_eip" "ngw" {
   domain   = "vpc"
+  tags = {
+     Name = "${var.env}-ngw"
+  }
 }
 
 resource "aws_nat_gateway" "ngw" {
