@@ -40,5 +40,5 @@ resource "aws_rds_cluster" "main" {
   database_name           = "dummy"
   master_username         = data.aws_ssm_parameter.master_username.value
   master_password         = data.aws_ssm_parameter.master_password.value
-  vpc_security_group_ids  = [awa_security_group.main.id]
+  vpc_security_group_ids  = [aws_security_group.main.id]
 }
