@@ -30,6 +30,7 @@ resource "aws_security_group" "security_group" {
     Name = "${var.env}-${var.component}-sg"
   }
 }
+
 resource "aws_iam_role" "role" {
   name = "${var.env}-${var.component}-role"
 
