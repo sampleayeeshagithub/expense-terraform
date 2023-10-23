@@ -50,22 +50,23 @@ module "vpc" {
  # prometheus_cidr  = var.prometheus_cidr
 #}
 
-#module "backend" {
- # depends_on       = [module.mysql]
- # source           = "./modules/app"
- # app_port         = 8080
- ## component        = "backend"
- # env              = var.env
-  #instance_type    = "t3.micro"
- # vpc_cidr         = var.vpc_cidr
- ## vpc_id           = module.vpc.vpc_id
-  #subnets          = module.vpc.private_subnets
-  #bastion_node_cidr= var.bastion_node_cidr
-  #desired_capacity = var.desired_capacity
-  #max_size         = var.max_size
-  #min_size         = var.min_size
-  #prometheus_cidr  = var.prometheus_cidr
-#}
+module "backend" {
+  depends_on       = [module.mysql]
+  source           = "./modules/app"
+  app_port         = 8080
+  component        = "backend"
+  env              = var.env
+  instance_type    = "t3.micro"
+  vpc_cidr         = var.vpc_cidr
+  vpc_id           = module.vpc.vpc_id
+  subnets          = module.vpc.private_subnets
+  bastion_node_cidr= var.bastion_node_cidr
+  desired_capacity = var.desired_capacity
+  max_size         = var.max_size
+  min_size         = var.min_size
+  prometheus_cidr  = var.prometheus_cidr
+   kms_key_id       =var.kms_key_id
+}
 
 module "mysql" {
   source           = "./modules/rds"
