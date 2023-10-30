@@ -19,7 +19,7 @@ EOF
 
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
-  node_group_name = "${var.env}-${var.project_name}-ng"
+  node_group_name = "${var.env}-${var.project_name}"
   node_role_arn   = aws_iam_role.node.arn
   subnet_ids      = var.subnet_ids
   instance_types  = var.instance_types
