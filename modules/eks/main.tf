@@ -8,7 +8,7 @@ resource "aws_eks_cluster" "main" {
 }
 
 resource "null_resource" "aws-auth" {
-  depends_on  = [aws_eks_cluster.main]
+  depends_on = [aws_eks_cluster.main]
   provisioner "local-exec" {
     command = <<EOF
 aws eks update-kubeconfig --name ${var.env}-${var.project_name}
