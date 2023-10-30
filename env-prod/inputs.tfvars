@@ -18,3 +18,7 @@ min_size         = 2
 instance_class   = "db.t3.medium"
 prometheus_cidr  = [ "172.31.20.245/32" ]
 kms_key_id       = "arn:aws:kms:us-east-1:299627189740:key/20d4c346-4cde-4977-b03b-c758bef825a5"
+
+#eks
+node_count  = 2
+instance_types = ["t3.large"]
