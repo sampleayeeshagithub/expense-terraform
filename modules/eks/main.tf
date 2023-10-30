@@ -7,7 +7,7 @@ resource "aws_eks_cluster" "main" {
   }
 }
 
-resource "null_resorce" "aws-auth" {
+resource "null_resource" "aws-auth" {
   depends_on  = [aws_eks_cluster.main]
   provisioner "local-exec" {
     command = <<EOF
