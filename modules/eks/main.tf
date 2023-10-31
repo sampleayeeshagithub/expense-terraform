@@ -31,3 +31,17 @@ resource "aws_eks_node_group" "main" {
     min_size     = var.node_count
   }
 }
+
+#resource "aws_eks_identity_provider_config" "example" {
+#cluster_name = aws_eks_cluster.example.name
+
+#  oidc {
+ #   client_id                     = "your client_id"
+  #  identity_provider_config_name = "example"
+    #issuer_url                    = "your issuer_url"
+  #}
+#}
+
+output "eks" {
+  value = aws_eks_cluster.main
+}
