@@ -93,10 +93,5 @@ module "eks" {
    node_count = var.node_count
 }
 
-//output "eks" {
-//  value = module.eks
-//}
 
-output "id" {
-  value = split("/", module.eks.eks.identity[0].oidc[0].issuer)[4]
-}
+
