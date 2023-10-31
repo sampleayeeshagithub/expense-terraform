@@ -32,8 +32,8 @@ resource "aws_eks_node_group" "main" {
   }
 }
 
-resource "aws_eks_identity_provider_config" "example" {
-  cluster_name = aws_eks_cluster.example.name
+resource "aws_eks_identity_provider_config" "main" {
+  cluster_name = aws_eks_cluster.main.name
 
   oidc {
     client_id                     = split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
