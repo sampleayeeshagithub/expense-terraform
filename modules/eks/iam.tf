@@ -92,6 +92,30 @@ resource "aws_iam_role" "frontend-eks-sa" {
       }
     ]
   })
+
+  inline_policy {
+    name = "inline"
+
+    policy = jsonencode({
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+            "kms:Decrypt",
+            "ssm:DescribeParameters",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
+          ],
+          "Resource": "*"
+        }
+      ]
+    })
+  }
+
 }
 
 resource "aws_iam_role" "backend-eks-sa" {
@@ -116,6 +140,30 @@ resource "aws_iam_role" "backend-eks-sa" {
       }
     ]
   })
+
+  inline_policy {
+    name = "inline"
+
+    policy = jsonencode({
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+            "kms:Decrypt",
+            "ssm:DescribeParameters",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
+          ],
+          "Resource": "*"
+        }
+      ]
+    })
+  }
+
 }
 
 resource "aws_iam_role" "schema-eks-sa" {
@@ -140,4 +188,28 @@ resource "aws_iam_role" "schema-eks-sa" {
       }
     ]
   })
+
+  inline_policy {
+    name = "inline"
+
+    policy = jsonencode({
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+            "kms:Decrypt",
+            "ssm:DescribeParameters",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
+          ],
+          "Resource": "*"
+        }
+      ]
+    })
+  }
+
 }
