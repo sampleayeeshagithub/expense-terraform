@@ -56,7 +56,8 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 }
 
 data "external" "thumbprint" {
-   program = ["bash", "${path.module}/thumbprint.sh", "${var.env}-${var.project_name}"]
+  depends_on = [aws_eks_cluster.main]
+  program = ["bash", "${path.module}/thumbprint.sh", "${var.env}-${var.project_name}"]
 }
 
 resource "aws_iam_openid_connect_provider" "eks" {
